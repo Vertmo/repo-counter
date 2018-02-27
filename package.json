@@ -1,0 +1,28 @@
+{
+  "name": "repo-counter",
+  "version": "1.0.0",
+  "description": "A web app using github's graphql API to count repo created during a given period of time. May be used in a future github workshop",
+  "main": "index.js",
+  "scripts": {
+    "browser": "browserify src/*.js -o bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vertmo/repo-counter.git"
+  },
+  "keywords": [
+    "Github",
+    "GraphQL"
+  ],
+  "author": "Basile Pesin",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Vertmo/repo-counter/issues"
+  },
+  "homepage": "https://github.com/Vertmo/repo-counter#readme",
+  "dependencies": {
+    "graphql-request": "^1.5.0",
+    "semantic-ui": "^2.3.0"
+  }
+}
