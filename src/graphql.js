@@ -1,6 +1,6 @@
 /**
  * Graphql client
- * @module utils/client
+ * @module graphql
  * @author Basile Pesin
  */
 
