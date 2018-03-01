@@ -4,10 +4,12 @@
     <head>
         <title>Repo-Counter</title>
         <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="node_modules/timepicker/jquery.timepicker.min.css">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
         <script src="semantic/dist/semantic.min.js"></script>
+        <script src="node_modules/timepicker/jquery.timepicker.min.js"></script>
 
         <!-- My scripts -->
         <script src="bundle.js"></script>
@@ -25,6 +27,20 @@
                     <div id="leaderboard" class="ui large celled list"></div>
                 </div>
             </div>
+            <div class="ui divider"></div>
+            <form class="ui form">
+                <h4 class="ui header">Time settings</h4>
+                <div class="fields">
+                    <div class="field">
+                        <label>Start time</label>
+                        <input type="text" id="startTimePicker">
+                    </div>
+                    <div class="field">
+                        <label>End time</label>
+                        <input type="text" id="endTimePicker">
+                    </div>
+                </div>
+            </form>
         </div>
     </body>
 </html>

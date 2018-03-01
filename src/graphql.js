@@ -11,7 +11,6 @@ var graphql = require('graphql-request')
  */
 class Client {
     static connect (token) {
-        console.log('Salut')
         Client.client = new graphql.GraphQLClient('https://api.github.com/graphql', {
             headers: {
                 Authorization: 'Bearer ' + token
