@@ -5,10 +5,11 @@
 
 var graphql = require('./graphql.js')
 var config = require('./config.js')
+var leaderboard = require('./leaderboard.js')
 
 graphql.client.connect(config.token)
 
-var contestants = ["Vertmo", "Ninored", "joenash"]
+var contestants = ["Vertmo", "Ninored", "joenash", "keyber"]
 
 $(function() {
     var query = `fragment userFields on User {
@@ -17,7 +18,6 @@ $(function() {
         resourcePath
         repositories(last:100, orderBy: {field: CREATED_AT, direction:DESC}, privacy:PUBLIC, affiliations:[OWNER]) {
             nodes {
-                name
                 createdAt
             }
         }
@@ -29,7 +29,7 @@ $(function() {
     }
     query += '}'
 
-    graphql.client.request(query).then(data => console.log(data))
+    graphql.client.request(query).then(data => {
+        leaderboard.generate(data)
+    })
 })
-
-
