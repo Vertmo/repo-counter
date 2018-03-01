@@ -7,7 +7,7 @@ A web app using Github's Graphql API to count repo created during a given period
 
 ## Usage ##
 * install the dependancies with `npm install`
-* place a config.js file in the src folder, containing :
+* place a `config.js` file in the `./src` folder, containing :
 ```javascript
 module.exports = {
     token: "{token}"
@@ -15,4 +15,5 @@ module.exports = {
 ```
 Where {token} is a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) with access to the `repo` and `user` scopes.
 * browserify the set of js files using `npm run browser`
+* place a `contestants.txt` file in the main folder. This file should contain the logins of all the contestants you want to track, one name by line.
 * the app is ready ! You can view it by opening the index.html file with your favorite web browser, or use a fancy web server.
