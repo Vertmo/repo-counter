@@ -8,7 +8,6 @@ function generate_leaderboard(data) {
     users = []
     for(var key in data) users.push(data[key])
     users.sort(compare_users)
-    console.log(users)
 
     // Generate leaderboard
     $('#leaderboard').empty()
@@ -23,7 +22,7 @@ function generate_leaderboard(data) {
         content.append($('<a class="header"></a>')
             .attr('href', 'https://github.com'+users[i]['resourcePath'])
             .append(users[i]['login']))
-        content.append('Created ' + users[i]['repositories']['nodes']['length'] + ' repositories')
+        content.append('Created ' + users[i]['repo_count'] + ' repositories')
         item.append(content)
 
         $('#leaderboard').append(item)
@@ -35,7 +34,7 @@ function generate_leaderboard(data) {
  * TODO : Count only the repos created since startdate
  */
 function compare_users(x, y) {
-    return y['repositories']['nodes']['length'] - x['repositories']['nodes']['length']
+    return y['repo_count'] - x['repo_count']
 }
 
 module.exports = {
