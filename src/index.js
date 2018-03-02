@@ -45,7 +45,7 @@ function refreshQuery() {
         login
         avatarUrl
         resourcePath
-        repositories(last:100, orderBy: {field: CREATED_AT, direction:DESC}, privacy:PUBLIC, affiliations:[OWNER]) {
+        repositories(last:100, orderBy: {field: CREATED_AT, direction:ASC}, privacy:PUBLIC, affiliations:[OWNER]) {
             nodes {
                 createdAt
             }
