@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/Vertmo/repo-counter#readme",
   "dependencies": {
+    "chart.js": "^2.7.2",
     "graphql-request": "^1.5.0",
     "semantic-ui": "^2.3.0",
     "timepicker": "^1.11.12"

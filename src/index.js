@@ -5,7 +5,9 @@
 
 var graphql = require('./graphql.js')
 var config = require('./config.js')
+var utils = require('./utils.js')
 var leaderboard = require('./leaderboard.js')
+var stats = require('./stats')
 
 graphql.client.connect(config.token)
 
@@ -15,20 +17,21 @@ $(function() {
     $('#endTimePicker').timepicker({ 'timeFormat': 'H:i' }).timepicker('setTime', new Date())
 
     $('#startTimePicker').change(() => {
-        refresh_query()
+        refreshQuery()
     })
 
     $('#endTimePicker').change(() => {
-        refresh_query()
+        refreshQuery()
     })
 
-    refresh_query()
+    stats.createChart()
+    refreshQuery()
 })
 
 /**
  * Send the query and apply all the changes, generally called on a timeout or after form change
  */
-function refresh_query() {
+function refreshQuery() {
     var contestants
     $.ajax({
         url: './contestants.txt',
@@ -66,24 +69,11 @@ function refresh_query() {
         endTime.setHours(parseInt(endString[0]))
         endTime.setMinutes(parseInt(endString[1]))
 
-        let users = number_of_repos(data, startTime, endTime)
+        let users = utils.numberOfRepos(data, startTime, endTime)
         leaderboard.generate(users)
-    })
-}
 
-/**
- * Count the number of repos created between startTime and endTime for each user
- * @param users list returned by the graphql query
- * @param startTime only count repos after this time
- * @param endTime only count repos before this time
- * @return user list enriched with the count of valid repos
- */
-function number_of_repos(users, startTime=(new Date(0)), endTime=(new Date())) {
-    for(var key in users) {
-        users[key]['repo_count'] = users[key]['repositories']['nodes'].filter(repo => {
-            let createdAt = new Date(repo['createdAt'])
-            return (createdAt > startTime && createdAt < endTime)
-        }).length
-    }
-    return users
+        // Lets make the stats
+        var repoStats = stats.calculateStats(data, startTime=startTime)
+        stats.updateChart(repoStats.labels, repoStats.data)
+    })
 }
