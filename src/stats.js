@@ -21,7 +21,7 @@ function calculateStats(data, startTime=new Date(), endTime=new Date()) {
 
     labels = []
     chartData = []
-    for(var i=0; i<timespan; i+=600) {
+    for(var i=0; i<timespan+600; i+=600) {
         let time = new Date(startTime.getTime()+i*1000)
         labels.push(time.toLocaleString().split(' ')[1].split(':').splice(0,2).join(':'))
         nb_repos = utils.numberOfRepos(data, startTime, time)

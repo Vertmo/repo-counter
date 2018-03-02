@@ -73,7 +73,8 @@ function refreshQuery() {
         leaderboard.generate(users)
 
         // Lets make the stats
-        var repoStats = stats.calculateStats(data, startTime=startTime)
+        if(new Date() < endTime) endTime = new Date()
+        var repoStats = stats.calculateStats(data, startTime, endTime)
         stats.updateChart(repoStats.labels, repoStats.data)
     })
 }
