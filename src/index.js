@@ -25,7 +25,9 @@ $(function() {
     })
 
     stats.createChart()
+
     refreshQuery()
+    setInterval(refreshQuery, 60000)
 })
 
 /**
