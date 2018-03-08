@@ -50,7 +50,6 @@ $(function() {
 function refreshQuery() {
     if(contestants.length == 0) {
         $('#leaderboard').text('No contestant has been added')
-        console.log($('#leaderboard'))
         return
     }
 
