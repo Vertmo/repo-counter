@@ -15,5 +15,5 @@ module.exports = {
 ```
 Where {token} is a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) with access to the `repo` and `user` scopes.
 * browserify the set of js files using `npm run browser`
-* place a `contestants.txt` file in the main folder. This file should contain the logins of all the contestants you want to track, one name by line.
 * the app is ready ! You can view it by opening the index.html file with your favorite web browser, or use a fancy web server.
+* You must add a list of contestants using the file input. You must use the Github login, separated by line feeds. You must also set the Start time (beginning of the tracking) and the End time (end of the tracking).

@@ -33,15 +33,26 @@
             </div>
             <div class="ui divider"></div>
             <form class="ui form">
-                <h4 class="ui header">Time settings</h4>
-                <div class="fields">
+                <div class="two fields">
                     <div class="field">
-                        <label>Start time</label>
-                        <input type="text" id="startTimePicker">
+                        <h4 class="ui header">Time settings</h4>
+                        <div class="fields">
+                            <div class="field">
+                                <label>Start time</label>
+                                <input type="text" id="startTimePicker">
+                            </div>
+                            <div class="field">
+                                <label>End time</label>
+                                <input type="text" id="endTimePicker">
+                            </div>
+                        </div>
                     </div>
                     <div class="field">
-                        <label>End time</label>
-                        <input type="text" id="endTimePicker">
+                        <h4 class="ui header">Users</h4>
+                        <div class="field">
+                            <input id="contestantsFile" type="file">
+                        </div>
+                        <br/><label><span id="contestantCounter">0</span> users tracked.</label>
                     </div>
                 </div>
             </form>

@@ -11,6 +11,8 @@ var stats = require('./stats')
 
 graphql.client.connect(config.token)
 
+var contestants = []
+
 $(function() {
     // Set the time pickers
     $('#startTimePicker').timepicker({ 'timeFormat': 'H:i' }).timepicker('setTime', new Date())
@@ -24,6 +26,18 @@ $(function() {
         refreshQuery()
     })
 
+    $('#contestantsFile').change(() => {
+        file = $('#contestantsFile')[0].files[0]
+        let fr = new FileReader()
+        fr.onload = () => {
+            contestants = fr.result.split('\n')
+            contestants.pop()
+            $('#contestantCounter').text(contestants.length)
+            refreshQuery()
+        }
+        fr.readAsText(file)
+    })
+
     stats.createChart()
 
     refreshQuery()
@@ -34,14 +48,11 @@ $(function() {
  * Send the query and apply all the changes, generally called on a timeout or after form change
  */
 function refreshQuery() {
-    var contestants
-    $.ajax({
-        url: './contestants.txt',
-        success: (result) => {
-            contestants = result.split('\n').filter(login => login.length > 0)
-        },
-        async: false
-    })
+    if(contestants.length == 0) {
+        $('#leaderboard').text('No contestant has been added')
+        console.log($('#leaderboard'))
+        return
+    }
 
     let query = `fragment userFields on User {
         login
